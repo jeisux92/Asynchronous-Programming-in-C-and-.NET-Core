@@ -49,5 +49,12 @@ namespace AsyncReturnTypes.xUnit
             Assert.Equal(initialPrice, cachedPrice);
             Assert.NotEqual(cachedPrice, changedPrice);
         }
+
+        [Fact]
+        public void AsyncManagerCanReturnParallelResult()
+        {
+            int numberOfSeconds = _returnTypeMgr.MineAndGetAggregateSeconds(2);
+            Assert.True(numberOfSeconds > 2, "The Parallel For loop did not mine for more than 2 seconds");
+        }
     }
 }
